@@ -3,30 +3,32 @@ repository: sproogen/resume-theme
 favicon: images/favicon.ico
 
 # Personal info
-name: Brett Harris
-title: Senior Network System Administrator
-email: brett.h@email.co.uk
-website: www.github.com/sproogen/resume-theme
+name: Ushir Raval
+title: Computer Science Student
+email: ushir.raval@gmail.com
+website: urishiraval.github.io
 
 # Social links
-twitter_username: facespics
-github_username:  sproogen
+twitter_username: u_rishi_raval
+github_username: urishiraval
 # dribbble_username: jekyll
 # facebook_username: jekyll
 # flickr_username: jekyll
-instagram_username: chillwildlife
-linkedin_username: jameswgrant
+instagram_username: rishi_raval7
+linkedin_username: ushir-raval-070237118
 # pinterest_username: jekyll
-youtube_username: globalmtb
+# youtube_username: globalmtb
 # googleplus_username: +jekyll
 
 # About Section
 # about_title: About Me
 about_profile_image: images/profile.jpg
 about_content: | # this will include new lines to allow paragraphs
-  Hi, my name's Brett and I'm a senior network system administrator. As well as administrating systems I also have experience making software and web apps. I have worked at a number of companies gaining teamwork and leadership skills.
+I have a relatively advanced view of the professional environment which is owed to my journey of various vocational and freelance jobs over my university years. I have a well-established skill set in Software Development and have assisted in various roles from research and development to web and application development. This has allowed me to become a strong and versatile programmer with a deep understanding of where academic concepts end and real-world application and techniques begin.
 
-  I am most skilled in: <mark>AWS</mark> and <mark>Eating Pizza</mark>
+My experience with different types of employees and work environments have also made me a good communicator who is able to understand what a user or client wants in order to communicate as effectively as possible in a professional manner befitting the corporate atmosphere while catering for those who do not share my skill set or technical knowledge
+
+  I am most skilled in: <mark>python</mark>, <mark>Java</mark>, <mark>C++<mark> and <mark>Web Development<mark>
 
 # Projects Section
 # projects_title: Projects
@@ -40,11 +42,10 @@ about_content: | # this will include new lines to allow paragraphs
 # More Section
 # more_title: A Little More About Me
 more_content: | # this will include new lines to allow paragraphs
-  Alongside my interests in networks and software engineering some of my other interests and hobbies are:
-   - Rock climbing
-   - Gaming
-   - Knitting
-   - [Becoming a ninja](https://www.youtube.com/watch?v=vtg4o__aRMg)
+  Alongside my interests in programming and software engineering some of my other interests and hobbies are:
+   - Reading
+   - VIM Development
+   - Cooking
 
 # Footer
 footer_show_references: true
