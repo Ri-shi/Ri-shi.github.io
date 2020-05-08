@@ -1,4 +1,4 @@
-- layout: centre
+- layout: left
   name: University of Pretoria
   dates: 2018 - Current
   qualification: BSc Computer Science
@@ -9,7 +9,7 @@
 
   #   I spent a lot of my free time as a committee member of the *Harvard Mountaineering Club* taking on roles such as *Trip Secretary* and *Vice-President*.
 
-  layout: centre
+  layout: left
   name: University of Pretoria
   dates: 2016 - 2017
   qualification: BEng Computer Engineering
