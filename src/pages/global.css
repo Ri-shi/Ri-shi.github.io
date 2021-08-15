@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700;900&family=Raleway:wght@300;400;500;700;900&family=Roboto+Mono:wght@200;400;700&display=swap');
+
+* {
+	font-family: 'Raleway', sans-serif;
+}
+
+pre {
+  font-family: 'Roboto Mono', monospace;
+}
+
+body {
+  width: 100%;
+  height: auto;
+  /* background-color: #22272e; */
+  background-color: #000;
+}
+
+.fancy-font {
+  font-family: 'Playfair Display', serif;
+}
+
+.heavy-font {
+  font-weight: 700;
+}
+
+.white {
+	color: #fff;
+}
+
+.medium-size-font {
+	font-size: 1.5rem;
+}
