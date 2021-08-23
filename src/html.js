@@ -11,6 +11,8 @@ export default function HTML(props) {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/default.min.css"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
         <script src="https://kit.fontawesome.com/943e35d59f.js" crossOrigin="anonymous"></script>
         {props.headComponents}
       </head>
@@ -23,6 +25,7 @@ export default function HTML(props) {
         />
         {props.postBodyComponents}
       </body>
+      <script>hljs.highlightAll();</script>
     </html>
   )
 }

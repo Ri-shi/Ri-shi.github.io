@@ -29,10 +29,10 @@ const IndexPage = () => {
         <div className="row justify-content-center pt-5">
           <h1 className="white fancy-font text-center">Ushir (Rishi) Raval</h1>
         </div>
-        <div className="row justify-content-center">
-          <pre className="text-center medium-size-font white">
-            software developer;
-          </pre>
+        <div className="row justify-content-center px-5">
+          <p className="text-center medium-size-font white" style={{fontFamily: "Roboto Mono"}}>
+              software developer;
+          </p>
         </div>
 
         <div className="row my-5 mx-2">

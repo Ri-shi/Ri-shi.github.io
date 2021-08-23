@@ -11,7 +11,7 @@ export default function Template({
     <main>
       <title>U Raval | {frontmatter.title}</title>
       <Navbar></Navbar>
-      <div className="container mt-5">
+      <div className="container my-5">
         <div className="row justify-content-center px-5">
           <h1 className="white fancy-font text-center">{frontmatter.title}</h1>
           <h2 className="white text-center">{frontmatter.date}</h2>
