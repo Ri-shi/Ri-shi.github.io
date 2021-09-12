@@ -16,7 +16,7 @@ I believe in being opinionated with what I do professionally while being open to
 ## Personal Projects
 
 #### [Obsidian Apple Reminders Plugin](https://github.com/urishiraval/obsidian-apple-reminders-plugin)
-<small>A plugin that brings Apple Reminders into the electron app for personal use.</small>
+<small>A plugin that brings Apple Reminders into an electron app for personal use.</small>
 
 #### [Watchdog Security System](https://github.com/COS301-SE-2020/Watchdog)
 <small>Watchdog is a security surveillance system that notifies owners of possible intruders in real-time. This repository forms part of the home control panel (HCP) that is a stand-alone python program that runs locally on the user's computer machine. This program aggregates the IP video footage to identify faces using state of the art facial detection and has a number of additional value-adding features</small>
