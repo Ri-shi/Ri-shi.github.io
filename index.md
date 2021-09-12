@@ -28,8 +28,3 @@ I believe in being opinionated with what I do professionally while being open to
 
 #### BSc Computer Science (2018 – 2020)
 <small>University of Pretoria/Universiteit van Pretoria</small>
-
-{% assign pages_list = site.posts %}
-{% for node in pages_list %}
-<a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url }}">{{ node.title }}</a>
-{% endfor %}

@@ -2,14 +2,6 @@
 markdown:         kramdown
 highlighter:      pygments
 
-toc:
-  ordered_list: false
-
-# defaults:
-#   -
-#     values:
-#       toc: true
-
 # Permalinks
 permalink:        pretty
 
@@ -39,4 +31,3 @@ github:
 
 plugins:
     - jekyll-paginate
-    - jekyll-toc

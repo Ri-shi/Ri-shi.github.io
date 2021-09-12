@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
  <title>Ushir (Rishi) Raval</title>
- <link href="https://urishiraval.github.io/atom.xml" rel="self"/>
- <link href="https://urishiraval.github.io/"/>
- <updated>2021-09-12T17:58:03+02:00</updated>
- <id>https://urishiraval.github.io</id>
+ <link href="http://localhost:4000/atom.xml" rel="self"/>
+ <link href="http://localhost:4000/"/>
+ <updated>2021-09-12T18:34:37+02:00</updated>
+ <id>http://localhost:4000</id>
  <author>
    <name>Rishi Raval</name>
    <email></email>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>Starting from Scratch - Fluent Validation</title>
-   <link href="https://urishiraval.github.io/2021/08/23/fluent-validation-1/"/>
+   <link href="http://localhost:4000/2021/08/23/fluent-validation-1/"/>
    <updated>2021-08-23T00:00:00+02:00</updated>
-   <id>https://urishiraval.github.io/2021/08/23/fluent-validation-1</id>
+   <id>http://localhost:4000/2021/08/23/fluent-validation-1</id>
    <content type="html">&lt;p&gt;In an attempt to further understand how fluent validation works in javascript, I tried to recreate an extremely basic chain-able system from scratch.&lt;/p&gt;
 
 &lt;h2 id=&quot;brief&quot;&gt;Brief&lt;/h2&gt;
