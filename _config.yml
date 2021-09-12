@@ -1,0 +1,42 @@
+# Dependencies
+markdown:         kramdown
+highlighter:      pygments
+
+toc:
+  ordered_list: false
+
+defaults:
+  -
+    values:
+      toc: true
+
+# Permalinks
+permalink:        pretty
+
+# Setup
+title:            Ushir (Rishi) Raval
+tagline:          ''
+description:      'Computer Scientist'
+url:              https://urishiraval.github.io
+baseurl:          /
+
+author:
+  name:           'Rishi Raval'
+  url:            https://urishiraval.github.io
+
+paginate:         10
+paginate_path: "/blog/:num"
+
+# Custom vars
+version:          2.1.0
+
+socials:
+  github:         https://github.com/urishiraval
+  linkedin:       https://www.linkedin.com/in/unraval/
+
+github:
+  repo:           https://github.com/urishiraval
+
+plugins:
+    - jekyll-paginate
+    - jekyll-toc

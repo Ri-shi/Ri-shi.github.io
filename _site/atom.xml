@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>Ushir (Rishi) Raval</title>
+ <link href="https://urishiraval.github.io/atom.xml" rel="self"/>
+ <link href="https://urishiraval.github.io/"/>
+ <updated>2021-09-12T17:58:03+02:00</updated>
+ <id>https://urishiraval.github.io</id>
+ <author>
+   <name>Rishi Raval</name>
+   <email></email>
+ </author>
+
+ 
+ <entry>
+   <title>Starting from Scratch - Fluent Validation</title>
+   <link href="https://urishiraval.github.io/2021/08/23/fluent-validation-1/"/>
+   <updated>2021-08-23T00:00:00+02:00</updated>
+   <id>https://urishiraval.github.io/2021/08/23/fluent-validation-1</id>
+   <content type="html">&lt;p&gt;In an attempt to further understand how fluent validation works in javascript, I tried to recreate an extremely basic chain-able system from scratch.&lt;/p&gt;
+
+&lt;h2 id=&quot;brief&quot;&gt;Brief&lt;/h2&gt;
+
+&lt;p&gt;The main goal of fluent validation seems to be the separation of highly conditional branching trees into it’s own layer in very dynamic systems. So far the only system that I’ve worked on where this would be of great benefit are business/financial applications with a ton of business/product rules and while ideally you’d want those rules to be evaluated in the back-end I think that the front-end (especially if it’s a monolithic front end, which is often the case in that environment) can get very dense with dynamic content depending on those rules.&lt;/p&gt;
+
+&lt;p&gt;I’m still searching for the “simplest form of this” with the “most substantial outcome” as Liebniz describes it, but I think that fluent validation is the strongest contender so far.&lt;/p&gt;
+
+&lt;h2 id=&quot;understanding-the-basics&quot;&gt;Understanding the Basics&lt;/h2&gt;
+
+&lt;p&gt;First, I researched different ways that function chaining was accomplished and ultimately found &lt;a href=&quot;https://stackoverflow.com/questions/35026609/chain-custom-javascript-functions&quot;&gt;this Stackoverflow post&lt;/a&gt; from 2016. In that post I found that there are 2 basic approuches that are pretty much similar in concept but with slightly different executions.&lt;/p&gt;
+
+&lt;h3 id=&quot;chaining-in-javascript&quot;&gt;Chaining in Javascript&lt;/h3&gt;
+
+&lt;p&gt;Before that however, I needed to define what was the minium requirement for a function to be chained. So this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;function chainableX () {
+    console.log(&quot;Executing X&quot;);
+    return this;
+}
+
+function chainableY() {
+    console.log(&quot;Executing Y&quot;);
+    return this;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Would allow us to ‘chain’ like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;var context = chainableX().chainableY();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;Executing X
+Executing Y
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Where the resulting &lt;code&gt;context&lt;/code&gt; variable would be the global call stack since these functions don’t belong to any object.So, with that, returning &lt;code&gt;this&lt;/code&gt; I could now chain functions.&lt;/p&gt;
+
+&lt;h3 id=&quot;accumulating-side-effects-within-a-scope&quot;&gt;Accumulating Side-effects within a Scope&lt;/h3&gt;
+
+&lt;p&gt;The next task was to allow for side effects to accumulate in a sequential manner. My initial thoughts were that this was very similar to a ‘Builder’ design pattern and indeed, when I glanced at the source code of some common validation packages, that seemed to be a solution that was used. However, in my attempt to keep things as simple as I possibly can, along with trying to use vanilla js and functional-ish concepts as much as I can, I opted for a slightly different approach, (but one that was not necessarily better by any metric).&lt;/p&gt;
+
+&lt;p&gt;My first attempt was to create an ‘object’ based solution that would accumulate the side effects on a variable within that context. So I thought that the initial object would somehow resemble this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;check = {
+    result: null,
+    not: function() {
+        this.result = !this.result;
+        return this;
+    },
+    or: function() {
+        return this;
+    },
+    and: function() {
+        return this;
+    },
+    t: function() {
+        return this;
+    },
+    f: function() {
+        return this;
+    }
+}
+
+console.log(check.not().f().and().t().result);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;true
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;chaining-of-boolean-operators&quot;&gt;Chaining of Boolean Operators&lt;/h3&gt;
+
+&lt;p&gt;I quickly realised that I’d have a glaring problem. The operators &lt;code&gt;AND&lt;/code&gt; and &lt;code&gt;OR&lt;/code&gt; are binary and while this gives the example chain above a ‘space’ to accumulate results, you can’t accumulate a binary operator without ‘embedding’ values similar to &lt;code&gt;check.not().and(&amp;lt;exp&amp;gt;)&lt;/code&gt;, which was not what I wanted.&lt;/p&gt;
+
+&lt;p&gt;So in order to solve this problem I decided to borrow from my Compiler Construction course in University by adding very basic ‘lookahead’ functionality.&lt;/p&gt;
+
+&lt;p&gt;Fundamentally, what this lookahead function would do is defer the binary operation until a subsequent unary operation has a result (kind of like the ‘Chain of responsibility’ design pattern). This is a bit of a dodgy solution which, I think, only works because chaining multiple binary operations have no value in a validation, i.e. &lt;code&gt;and().and().t()&lt;/code&gt; makes no logical sense in boolean terms and adds no functional value.&lt;/p&gt;
+
+&lt;p&gt;So, adding this lookahead function as _la and just concentrating on &lt;code&gt;AND&lt;/code&gt;, we get the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;check = {
+    _la: null,
+    and: function() {
+        //if a lookahead is already waiting to be executed we can automatically say that the previous operator was binary
+        if (this._la) throw &quot;Chaining multiple binary operators is not allowed&quot;;
+        //This is just to allow for closure resolution to ensure that the function will retain the correct value of result
+        let res = this.result;
+        //The Looahead function in question. 'exp' is the result of a subsequent unary operation
+        this._la = function(exp) {
+            return res &amp;amp;&amp;amp; exp;
+        };
+        return this;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Adding some ‘constants’ like true and false, along with a ‘default lookahead’ function in order to cater for when our lookahead is null we get:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;check = {
+    _la: null,
+    _defaultLa: function(exp) {
+        //Just pass through the value
+        return exp;
+    },
+    and: function() {
+        //if a lookahead is already waiting to be executed we can automatically say that the previous operator was binary
+        if (this._la) throw &quot;Chaining multiple binary operators is not allowed&quot;;
+        //This is just to allow for closure resolution to ensure that the function will retain the correct value of result
+        let res = this.result;
+        //The Looahead function in question. 'exp' is the result of a subsequent unary operation
+        this._la = function(exp) {
+            return res &amp;amp;&amp;amp; exp;
+        };
+        return this;
+    },
+    tautology: function() {
+        var eval = (this._la) ? this._la : this._defaultLa;
+        this.result = eval(true);
+        this._la = null;
+        return this;
+    },
+    fallacy: function () {
+        var eval = (this._la) ? this._la : this._defaultLa;
+        this.result = eval(false);
+        this._la = null;
+        return this;
+    }
+}
+
+console.log(check.tautology().and().tautology().result);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;true
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;All that is left to do is to extend this concept to the &lt;code&gt;OR&lt;/code&gt; and &lt;code&gt;NOT&lt;/code&gt; operators. However the &lt;code&gt;NOT&lt;/code&gt; operator, despite being a unary operator, still needs to be implemented as a deferred operation since we’re negating the result of the operation after it, i.e. we need it to look like &lt;code&gt;not().operation()&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The resulting snippet becomes:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;check = {
+    result: null,
+    _la: null,
+    _defaultLa: function(exp) {
+        //Just pass through the value
+        return exp;
+    },
+    not: function() {
+        var eval = (this._la) ? this._la : this._defaultLa;
+        var res = this.result;
+        this._la = function(exp) {
+            //We pass in eval to the function stack by taking advantage of javascript closures
+            return eval(!exp);
+        }
+        return this;
+    },
+    and: function() {
+        //if a lookahead is already waiting to be executed we can automatically say that the previous operator was binary
+        if (this._la) throw &quot;Chaining multiple binary operators is not allowed&quot;;
+        //This is just to allow for closure resolution to ensure that the function will retain the correct value of result
+        let res = this.result;
+        //The Looahead function in question. 'exp' is the result of a subsequent unary operation
+        this._la = function(exp) {
+            return res &amp;amp;&amp;amp; exp;
+        };
+        return this;
+    },
+    or: function() {
+        //if a lookahead is already waiting to be executed we can automatically say that the previous operator was binary
+        if (this._la) throw &quot;Chaining multiple binary operators is not allowed&quot;;
+        //This is just to allow for closure resolution to ensure that the function will retain the correct value of result
+        let res = this.result;
+        //The Looahead function in question. 'exp' is the result of a subsequent unary operation
+        this._la = function(exp) {
+            return res || exp;
+        };
+        return this;
+    },
+    tautology: function() {
+        var eval = (this._la) ? this._la : this._defaultLa;
+        this.result = eval(true);
+        this._la = null;
+        return this;
+    },
+    fallacy: function () {
+        var eval = (this._la) ? this._la : this._defaultLa;
+        this.result = eval(false);
+        this._la = null;
+        return this;
+    }
+}
+
+console.log(check.fallacy().or().not().fallacy().result);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;true
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And there you have it. This is a working, chainable, admittedly ultra-basic fluent validator that you can extent by adding more operators and dependant objects etc.&lt;/p&gt;
+
+&lt;h3 id=&quot;final-product&quot;&gt;Final Product&lt;/h3&gt;
+
+&lt;p&gt;However, to make it a bit more usable and extendable I thought converting this to a context-full, generic-ish object would be better:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;function fcheck() {
+        this.result = null;
+        this._la = null;
+        this._defaultLa = function(exp) {
+            return exp;
+        };
+        this._preval = function (exp) {
+            var eval = (this._la) ? this._la : this._defaultLa;
+            this.result = eval(exp);
+        };
+        this.not = function() {
+            var eval = (this._la) ? this._la : this._defaultLa;
+            this._la = function(exp) {
+                //We pass in eval to the function stack by taking advantage of javascript closures
+                return eval(!exp);
+            }
+            return this;
+        };
+        this.or = function() {
+            if (this._la) throw &quot;Chaining multiple binary operators is not allowed&quot;;
+            let res = this.result;
+            this._la = function(exp) {
+                return res || exp;
+            }
+            return this;
+        };
+        this.and = function() {
+            if (this._la) throw &quot;Chaining multiple binary operators is not allowed&quot;;
+            let res = this.result;
+            this._la = function(exp) {
+                return res &amp;amp;&amp;amp; exp;
+            };
+            return this;
+        };
+        this.tautology = function() {
+            this._preval(true);
+            this._la = null;
+            return this;
+        };
+        this.fallacy = function() {
+            this._preval(false);
+            this._la = null;
+            return this;
+        }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This allows us to dynamically add rules on the fly by adding to the object, this function:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;fcheck.prototype.addRule = function (ruleName, rule) {
+    var acc = this;
+    this[ruleName] = function () {
+        this._preval(rule());
+        return acc;
+    }
+    return this;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;So the final version:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;
+function fcheck() {
+        this.result = null;
+        this._la = null;
+        this._defaultLa = function(exp) {
+            return exp;
+        };
+        this._preval = function (exp) {
+            var eval = (this._la) ? this._la : this._defaultLa;
+            this._la = null;
+            this.result = eval(exp);
+        };
+        this.not = function() {
+            var eval = (this._la) ? this._la : this._defaultLa;
+            this._la = function(exp) {
+                return eval(!exp);
+            }
+            return this;
+        };
+        this.or = function() {
+            if (this._la) throw &quot;Chaining multiple binary operators is not allowed&quot;;
+            let res = this.result;
+            this._la = function(exp) {
+                return res || exp;
+            }
+            return this;
+        };
+        this.and = function() {
+            if (this._la) throw &quot;Chaining multiple binary operators is not allowed&quot;;
+            let res = this.result;
+            this._la = function(exp) {
+                return res &amp;amp;&amp;amp; exp;
+            };
+            return this;
+        };
+        this.tautology = function() {
+            this._preval(true);
+            return this;
+        };
+        this.fallacy = function() {
+            this._preval(false);
+            return this;
+        }
+}
+
+fcheck.prototype.addRule = function (ruleName, rule) {
+    var acc = this;
+    this[ruleName] = function () {
+        this._preval(rule());
+        return acc;
+    }
+    return this;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And this object can be used like so:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;var scenario = new fcheck();
+scenario.addRule(&quot;myFunction&quot;, function () {
+    return true;
+});
+
+scenario.not().myFunction().and().fallacy().result;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;false
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This also allows us to compose complex validations, for example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;
+var flagA = true;
+var flagB = false;
+
+var Rule1 = new fcheck().addRule(&quot;isScenarioA&quot;, function () {
+    return flagA == true;
+});
+var Rule2 = new fcheck().addRule(&quot;isScenarioA&quot;, function () {
+    return flagB == true;
+});
+
+var BusinessValidations = new fcheck().addRule('rule1', function () {
+    return Rule1.isScenarioA().result;
+})
+.addRule('rule2', function () {
+    return Rule2.isScenarioA().result;
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;BusinessValidations.rule1().and().rule2().result;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;false
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;BusinessValidations.rule1().and().not().rule2().result;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;true
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And that’s it. Thanks for sticking around to this sentence. If you, the reader, has any thoughts on this implementation or a better way to do this (besides just using a library…I do know that I can and that’s not the point here), please do reach out and let me know on my socials found somewhere on this site.&lt;/p&gt;
+</content>
+ </entry>
+ 
+
+</feed>
