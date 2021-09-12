@@ -1,23 +1,42 @@
+# Dependencies
+markdown:         kramdown
+highlighter:      pygments
+
+toc:
+  ordered_list: false
+
+defaults:
+  -
+    values:
+      toc: true
+
 # Permalinks
 permalink:        pretty
 
 # Setup
-title:            Hyde
-tagline:          'A Jekyll theme'
-description:      'A brazen two-column <a href="http://jekyllrb.com" target="_blank">Jekyll</a> theme that pairs a prominent sidebar with uncomplicated content. Made by <a href="https://twitter.com/mdo" target="_blank">@mdo</a>.'
-url:              http://hyde.getpoole.com
+title:            Ushir (Rishi) Raval
+tagline:          ''
+description:      'Computer Scientist'
+url:              https://urishiraval.github.io
 baseurl:          /
 
 author:
-  name:           'Mark Otto'
-  url:            https://twitter.com/mdo
+  name:           'Rishi Raval'
+  url:            https://urishiraval.github.io
 
-paginate:         5
+paginate:         10
+paginate_path: "/blog/:num"
 
 # Custom vars
 version:          2.1.0
 
-github:
-  repo:           https://github.com/poole/hyde
+socials:
+  github:         https://github.com/urishiraval
+  linkedin:       https://www.linkedin.com/in/unraval/
 
-gem: [jekyll-paginate, jekyll-gists]
+github:
+  repo:           https://github.com/urishiraval
+
+plugins:
+    - jekyll-paginate
+    - jekyll-toc
