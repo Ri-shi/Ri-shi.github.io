@@ -9,7 +9,7 @@ title: Home
 
 A Computer Scientist working as a Software developer in the world of Finance.
 
-I try to think deeply about everything I develop, from a small plugin to contributing to larger enterprise software stacks. I have a deep fascination with software arechitecture along with software and development lifecycles.
+I try to think deeply about everything I develop, from a small plugin to contributing to larger enterprise software stacks. I have a deep fascination with software architecture along with software and development lifecycles.
 
 I believe in being opinionated with what I do professionally while being open to understanding why my opinions would be wrong, all in dedication to constant improvement.
 
