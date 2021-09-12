@@ -7,7 +7,7 @@ permalink:        pretty
 
 # Setup
 title:            Ushir (Rishi) Raval
-tagline:          ''
+tagline:          'Computer Scientist'
 description:      'Computer Scientist'
 url:              https://urishiraval.github.io
 baseurl:          /
@@ -25,6 +25,7 @@ version:          2.1.0
 socials:
   github:         https://github.com/urishiraval
   linkedin:       https://www.linkedin.com/in/unraval/
+  instagram:      https://www.instagram.com/rishi_raval7/
 
 github:
   repo:           https://github.com/urishiraval
