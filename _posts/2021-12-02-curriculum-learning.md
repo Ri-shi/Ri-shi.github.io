@@ -34,7 +34,8 @@ This process flow, while very basic, models the portion of the code that feeds i
 
 In Curriculum Learning, the *professor* simply creates a structured progression of 'questions' (essentially just sets of inputs) and ranks these into blocks segregated by difficulty. Difficulty can be determined by how well the model does on each input after a single (or negligibly few) run(s) with over formulae being proposed across various papers. Easy questions are asked first and after the student 'gets the hang of those', it moves on to progressively more difficult problems to solve.
 
-This is basically a 'path of least resistance' and from my experiments, demonstrates a favorable and dramatic increase in performance. For a University Assignment, I had to create a classifier and demonstrate the affects of different training methods on performance, the full report can be seen [here](https://github.com/urishiraval/cos711-a2/blob/master/report/output/main.pdf) but long story short, performance was boosted from average a little above 86% to a steady mean of 97% (with a low standard deviation across runs for both models) even reaching 99% accuracy boasting very impressive lack of loss with (what I perceived to be) very little over-fitting.
+This is basically a 'path of least resistance' and from my experiments, demonstrates a favorable and dramatic increase in performance. For a University Assignment, I had to create a classifier and demonstrate the affects of different training methods on performance, the full report can be seen [here](https://github.com/urishiraval/cos711-a2/blob/master/report/output/main.pdf) but long story short, 
+>performance was boosted from an average a little above **86% to a steady mean of 97%** (with a low standard deviation across runs for both models) **even reaching 99% accuracy** boasting very impressive lack of loss with (what I perceived to be) very little over-fitting.
 
 ### Downsides
 
