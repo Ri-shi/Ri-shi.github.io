@@ -4,7 +4,7 @@
  <title>Ushir (Rishi) Raval</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2021-12-02T19:11:21+02:00</updated>
+ <updated>2021-12-02T19:17:37+02:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Rishi Raval</name>
@@ -52,7 +52,10 @@
 
 &lt;p&gt;In Curriculum Learning, the &lt;em&gt;professor&lt;/em&gt; simply creates a structured progression of ‘questions’ (essentially just sets of inputs) and ranks these into blocks segregated by difficulty. Difficulty can be determined by how well the model does on each input after a single (or negligibly few) run(s) with over formulae being proposed across various papers. Easy questions are asked first and after the student ‘gets the hang of those’, it moves on to progressively more difficult problems to solve.&lt;/p&gt;
 
-&lt;p&gt;This is basically a ‘path of least resistance’ and from my experiments, demonstrates a favorable and dramatic increase in performance. For a University Assignment, I had to create a classifier and demonstrate the affects of different training methods on performance, the full report can be seen &lt;a href=&quot;https://github.com/urishiraval/cos711-a2/blob/master/report/output/main.pdf&quot;&gt;here&lt;/a&gt; but long story short, performance was boosted from average a little above 86% to a steady mean of 97% (with a low standard deviation across runs for both models) even reaching 99% accuracy boasting very impressive lack of loss with (what I perceived to be) very little over-fitting.&lt;/p&gt;
+&lt;p&gt;This is basically a ‘path of least resistance’ and from my experiments, demonstrates a favorable and dramatic increase in performance. For a University Assignment, I had to create a classifier and demonstrate the affects of different training methods on performance, the full report can be seen &lt;a href=&quot;https://github.com/urishiraval/cos711-a2/blob/master/report/output/main.pdf&quot;&gt;here&lt;/a&gt; but long story short,&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;performance was boosted from an average a little above &lt;strong&gt;86% to a steady mean of 97%&lt;/strong&gt; (with a low standard deviation across runs for both models) &lt;strong&gt;even reaching 99% accuracy&lt;/strong&gt; boasting very impressive lack of loss with (what I perceived to be) very little over-fitting.&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;h3 id=&quot;downsides&quot;&gt;Downsides&lt;/h3&gt;
 
