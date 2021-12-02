@@ -112,6 +112,75 @@
   
   <div class="post">
     <h2 class="post-title">
+      <a href="/2021/12/02/curriculum-learning/">
+        Novel Techniques - Curriculum Learning
+      </a>
+    </h2>
+
+    <span class="post-date">02 Dec 2021</span>
+    <p>In Neural Network Optimization, most academics have moved on to more novel methods such as Deep Neural Nets and Cascading Networks. However, some techniques can be used to optimise more basic Simple Neural Networks that fall in line with Occam’s Razor. One of them is Curriculum Learning.</p>
+
+
+
+    <!-- <p>In Neural Network Optimization, most academics have moved on to more novel methods such as Deep Neural Nets and Cascading Networks. However, some techniques can be used to optimise more basic Simple Neural Networks that fall in line with Occam’s Razor. One of them is Curriculum Learning.</p>
+
+<h2 id="brief">Brief</h2>
+
+<blockquote>
+  <p>Occam’s razor, Ockham’s razor, Ocham’s razor (Latin: novacula Occami), also known as the principle of parsimony or the law of parsimony (Latin: lex parsimoniae), is the problem-solving principle that “entities should not be multiplied beyond necessity” - Our trusty pal <a href="https://en.wikipedia.org/wiki/Occam's_razor">Wikipedia</a></p>
+</blockquote>
+
+<p>Tl;dr, Occam’s Razor basically says that creating complexity is usually unnecessary and sometimes detrimental to the performance of your system.</p>
+
+<p>Tl;dr the Tl;dr: Simple is usually best.</p>
+
+<p>In this case, Curriculum learning aims to improve model performance through a novel training technique that requires an empirical grading of your training data. After all, throwing things at a model and just expecting is to work seems like a very maddening way to get it to perform better (at least to me). This post will by no means be an exhaustive explication of the technique, for that please read one of the papers referenced at the end.</p>
+
+<h2 id="understanding-the-basics">Understanding the Basics</h2>
+
+<p>Training a Neural Network usually involves:</p>
+<ol>
+  <li>Data Preparation</li>
+  <li>Training</li>
+  <li>Evaluation</li>
+</ol>
+
+<p>The latter 2 usually occurring over multiple iterations of the network with different hyperparameters. Curriculum Learning adds a step between 1 and 2 where the data is ‘graded’. There are many formulae that this grading system can use, but I’ll just be mentioning the simplest one here, what I call ‘student’ evaluations, where each set of inputs are graded based on how accurate the model is on it’s first or second pass.</p>
+
+<h3 id="the-curriculum">The ‘Curriculum’</h3>
+
+<p>This excellent conceptual model of a the training process is from Kwon’s ‘Artificial Neural Networks’ book:</p>
+
+<p><img src="http://localhost:4000/public/assets/kwon-learning-scheme.png" alt="Supervised Learning Scheme" /></p>
+
+<p>This process flow, while very basic, models the portion of the code that feeds in training data as a <em>professor</em> or teacher and the model is the <em>student</em>.</p>
+
+<p>In Curriculum Learning, the <em>professor</em> simply creates a structured progression of ‘questions’ (essentially just sets of inputs) and ranks these into blocks segregated by difficulty. Difficulty can be determined by how well the model does on each input after a single (or negligibly few) run(s) with over formulae being proposed across various papers. Easy questions are asked first and after the student ‘gets the hang of those’, it moves on to progressively more difficult problems to solve.</p>
+
+<p>This is basically a ‘path of least resistance’ and from my experiments, demonstrates a favorable and dramatic increase in performance. For a University Assignment, I had to create a classifier and demonstrate the affects of different training methods on performance, the full report can be seen <a href="https://github.com/urishiraval/cos711-a2/blob/master/report/output/main.pdf">here</a> but long story short, performance was boosted from average a little above 86% to a steady mean of 97% (with a low standard deviation across runs for both models) even reaching 99% accuracy boasting very impressive lack of loss with (what I perceived to be) very little over-fitting.</p>
+
+<h3 id="downsides">Downsides</h3>
+
+<p>The first issue is the matter of grading. This requires some form of intimacy with the data before training and if the data is graded poorly or not properly split up, or if the training speed is too fast or too slow, it may have no effect. Thus we’ve introduced even more annoying hyperparamters to the mix.</p>
+
+<p>The second issue makes the first one even more annoying. This method increases learning time significantly (and here ‘significantly’ is an understatement), which might not be feasible for larger models and make tuning much more tedious.</p>
+
+<h2 id="in-conclusion">In Conclusion</h2>
+
+<p>This is a cool way (at least to me) to train NN’s and it has a lot of benefits, especially with smaller models. This might also give you a way to get out of a plateau that you may be facing with your model and we all know how annoying those can be. If you’re reading this, hope it helps!</p>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li>G. Hacohen and D. Weinshall, “On the power of curriculum learning in
+training deep networks,” 2019.</li>
+  <li>Kwon SJ. Artificial Neural Networks. Nova Science Publishers, Inc; 2011. Accessed December 2, 2021.</li>
+</ul>
+ -->
+  </div>
+  
+  <div class="post">
+    <h2 class="post-title">
       <a href="/2021/08/23/fluent-validation-1/">
         Starting from Scratch - Fluent Validation
       </a>
