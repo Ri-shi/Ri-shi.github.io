@@ -32,8 +32,6 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
   <script src="https://kit.fontawesome.com/943e35d59f.js" crossorigin="anonymous"></script>
 
-  <link rel="stylesheet"
-      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/atom-one-light.min.css">
 
 
   <!-- Icons -->
@@ -42,6 +40,29 @@
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+  
+
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-dark.min.css" integrity="sha512-Njdz7T/p6Ud1FiTMqH87bzDxaZBsVNebOWmacBjMdgWyeIhUSFU4V52oGwo3sT+ud+lyIE98sS291/zxBfozKw==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+  <link rel="stylesheet" href="/public/css/atom-dark.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js" integrity="sha512-hpZ5pDCF2bRCweL5WoA0/N1elet1KYL5mx3LP555Eg/0ZguaHawxNvEjF6O3rufAChs16HVNhEc6blF/rZoowQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-bash.min.js" integrity="sha512-/xr8BBHgclic5pEsdspPqQS8ne+X8QbYRK22c1WRDj8zERTBJDH+Ic/3o8vnrdz5yeGzlzMfp8k33tGgDaAh6g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
+  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/plugins/toolbar/prism-toolbar.min.css" integrity="sha512-ycl7dIZ0VJ5535/dzskAMTwOI6OoTNZ3PeD+tfckvYqMmAzaEwQfJHqJTSqcV2iQeJnp5XxnFy5jKotibstp7A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/plugins/toolbar/prism-toolbar.min.js" integrity="sha512-YrvgEHAi5/3o2OT+/vh1z19oJXk/Kk0qdVKbjEFl9VRmcLTaWRYzVziZCvoGpJ2TrnV7rB8pnJcz1ioVJjgw2A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js" integrity="sha512-pUNGXbOrc+Y3dm5z2ZN7JYQ/2Tq0jppMDOUsN4sQHVJ9AUQpaeERCUfYYBAnaRB9r8d4gtPKMWICNhm3tRr4Fg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <style>
+    @font-face {
+      font-family: 'Victor Mono';
+      src: url("/public/assets/VictorMono/WOFF/VictorMono-Medium.woff");
+    }
+
+    code {
+      font-family: 'Victor Mono', monospace !important;
+    }
+  </style>
 </head>
 
 
@@ -119,6 +140,90 @@
 
 
 <div class="posts">
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/2021/12/09/deploying-frontends/">
+        ABC’s - Deploying Front Ends (featuring EC2)
+      </a>
+    </h2>
+
+    <span class="post-date">09 Dec 2021</span>
+    <p>With Cloud infrastructure becoming ultra-available, deploying apps have become super easy and as such the deployment/devops space (in my opinion) is going to get pretty interesting in the next few years (since I believe that trivializing the basics makes a breeding ground for creativity). I wanted to document how I’ve been deploying my side projects (very basic apps, prototypes and POCs) for posterity.</p>
+
+
+
+    <!-- <p>With Cloud infrastructure becoming ultra-available, deploying apps have become super easy and as such the deployment/devops space (in my opinion) is going to get pretty interesting in the next few years (since I believe that trivializing the basics makes a breeding ground for creativity). I wanted to document how I’ve been deploying my side projects (very basic apps, prototypes and POCs) for posterity.</p>
+
+<h2 id="step-1-prep-your-server">Step 1: Prep your server</h2>
+
+<p>Before you think about deploying your app, you need to configure your server. This means:</p>
+
+<ol>
+  <li>Getting Nginx or Apache</li>
+  <li>Configuring your ports</li>
+  <li>If deploying multiple apps, configuring a reverse proxy</li>
+  <li>If you have a domain, configuring your DNS and getting SSL certificates for HTTPS</li>
+</ol>
+
+<p>Points 3 and 4 are out of this scope, but I’ll probably write something about those in the future (tbh, I’m too lazy to get into it now).</p>
+
+<p>I prefer to use Nginx, just because it’s so much simpler to configure, and allows you to do the reverse proxy-ing much quicker. So this article will focus more on that rather than apache, which is also a fine tool, don’t get me wrong.</p>
+
+<p>If on ubuntu:</p>
+
+<pre><code class="language-bash">sudo apt-install nginx
+</code></pre>
+<p>If on EC2 (which I often am) go to the <code>Security Policy</code> that was configured when you instantiated the server and check out the <code>Outbound</code> tab. From here you can configure any port you want for TCP or UDP and there is plenty of docs to get you straight for that.</p>
+
+<p>Your Nginx setup will auto-magically configure your HTTP port for your server (Port 88) and will also use the default folder that is used by Apache 2 by default (more on that later).</p>
+
+<h2 id="step-2-build-your-project">Step 2: Build your project</h2>
+
+<p>This obviously depends on what framework you use, but most all modern ones use either Webpack, Rollup or something similar under the hood.</p>
+
+<p>Now all you need to know is that these build tools generate a “bundled” version of your code, which in essence are 1 or 2 files (or a similarly small amount of large files) that contain the entirety of your codebase created in a folder with all your assets (such as images or css and the like). In the case of Typescript projects, this will be compiled down to javascript.</p>
+
+<p>This “bundle” or file is what your server is concerned with. It’s the deployable artefact that needs to be “published”.</p>
+
+<p>For Svelte and React:</p>
+<pre><code class="language-bash">npm run build
+</code></pre>
+<p>For Angular 2:</p>
+<pre><code class="language-bash">ng build .
+</code></pre>
+
+<h2 id="step-3-publishing-your-artifacts">Step 3: Publishing your Artifacts</h2>
+
+<p>As the heading suggests, you’re now able to get your app onto the server to be accessible from the public url.</p>
+
+<p>“Publish” in this context (and usually in most situations) just means copying the artefact into a publicly accessible folder, which is the endpoint configured in Apache or Nginx. In linux this is almost always <code>/var/www/html/*</code></p>
+
+<p>The simplest, most basic way to do this (in my opinion) is to just FTP into your server and copy the files. In a production environment ideally you’d use a CI/CD-esque tool like AWS Codestar, GitHub Actions or Azure Devops Pipelines, but when you’re just wanting to deploy a small prototype or POC, §“ain’t nobody got time for that”.</p>
+
+<p>I’ll be using <code>sftp</code> from the terminal. You can use something like Filezilla or other GUI ftp apps, but I’m lazy and I also don’t like installing extra apps if there’s a perfectly fine solution out of the box.</p>
+
+<p>If on EC2, change to the directory that contains your <code>public</code> files (or whatever your framework generated from the previous step) and:</p>
+<pre><code class="language-bash">sftp -i &lt;path to your pem key file here&gt; ubuntu@&lt;your EC2 public domain here&gt;:/var/www/html/
+</code></pre>
+
+<p>If you’re using the Amazon Linux image you can substitute <code>ubuntu</code> for <code>user</code>. If you don’t know how to get your key file, check out the docs on how to connect with SSH. It’s basically the same process and the pem file works for most everything to do with connecting remotely to your instance.</p>
+
+<p>Next you want to actually transfer the files:</p>
+<pre><code class="language-bash">put -r public/*
+</code></pre>
+
+<p>Wait for that to complete and then exit <code>sftp</code> (usually Ctrl-C or <code>exit</code>) and restart nginx for good measure:</p>
+<pre><code class="language-bash">sudo service nginx restart
+</code></pre>
+
+<p>I’ve found that restarting nginx will invalidate client side caching so that the user doesn’t have to hard-refresh the browser if they log on with an active cache.</p>
+
+<h2 id="closing-remarks">Closing Remarks</h2>
+
+<p>There you go. You have an admittedly basic but super (and here ‘super’ means ‘relatively’) pain free prototype that is publicly accessible (or as accessible as you configure the EC2 security policy to be) and easy to run and update. If you’re reading this, hope it helped!</p>
+ -->
+  </div>
   
   <div class="post">
     <h2 class="post-title">
@@ -583,6 +688,6 @@ var BusinessValidations = new fcheck().addRule('rule1', function () {
     </div>
 
   </body>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
-  <script>hljs.highlightAll();</script>
+
+
 </html>

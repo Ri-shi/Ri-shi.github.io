@@ -4,13 +4,90 @@
  <title>Ushir (Rishi) Raval</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2021-12-02T20:12:02+02:00</updated>
+ <updated>2021-12-09T23:50:25+02:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Rishi Raval</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>ABC’s - Deploying Front Ends (featuring EC2)</title>
+   <link href="http://localhost:4000/2021/12/09/deploying-frontends/"/>
+   <updated>2021-12-09T00:00:00+02:00</updated>
+   <id>http://localhost:4000/2021/12/09/deploying-frontends</id>
+   <content type="html">&lt;p&gt;With Cloud infrastructure becoming ultra-available, deploying apps have become super easy and as such the deployment/devops space (in my opinion) is going to get pretty interesting in the next few years (since I believe that trivializing the basics makes a breeding ground for creativity). I wanted to document how I’ve been deploying my side projects (very basic apps, prototypes and POCs) for posterity.&lt;/p&gt;
+
+&lt;h2 id=&quot;step-1-prep-your-server&quot;&gt;Step 1: Prep your server&lt;/h2&gt;
+
+&lt;p&gt;Before you think about deploying your app, you need to configure your server. This means:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Getting Nginx or Apache&lt;/li&gt;
+  &lt;li&gt;Configuring your ports&lt;/li&gt;
+  &lt;li&gt;If deploying multiple apps, configuring a reverse proxy&lt;/li&gt;
+  &lt;li&gt;If you have a domain, configuring your DNS and getting SSL certificates for HTTPS&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Points 3 and 4 are out of this scope, but I’ll probably write something about those in the future (tbh, I’m too lazy to get into it now).&lt;/p&gt;
+
+&lt;p&gt;I prefer to use Nginx, just because it’s so much simpler to configure, and allows you to do the reverse proxy-ing much quicker. So this article will focus more on that rather than apache, which is also a fine tool, don’t get me wrong.&lt;/p&gt;
+
+&lt;p&gt;If on ubuntu:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;sudo apt-install nginx
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If on EC2 (which I often am) go to the &lt;code&gt;Security Policy&lt;/code&gt; that was configured when you instantiated the server and check out the &lt;code&gt;Outbound&lt;/code&gt; tab. From here you can configure any port you want for TCP or UDP and there is plenty of docs to get you straight for that.&lt;/p&gt;
+
+&lt;p&gt;Your Nginx setup will auto-magically configure your HTTP port for your server (Port 88) and will also use the default folder that is used by Apache 2 by default (more on that later).&lt;/p&gt;
+
+&lt;h2 id=&quot;step-2-build-your-project&quot;&gt;Step 2: Build your project&lt;/h2&gt;
+
+&lt;p&gt;This obviously depends on what framework you use, but most all modern ones use either Webpack, Rollup or something similar under the hood.&lt;/p&gt;
+
+&lt;p&gt;Now all you need to know is that these build tools generate a “bundled” version of your code, which in essence are 1 or 2 files (or a similarly small amount of large files) that contain the entirety of your codebase created in a folder with all your assets (such as images or css and the like). In the case of Typescript projects, this will be compiled down to javascript.&lt;/p&gt;
+
+&lt;p&gt;This “bundle” or file is what your server is concerned with. It’s the deployable artefact that needs to be “published”.&lt;/p&gt;
+
+&lt;p&gt;For Svelte and React:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;npm run build
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;For Angular 2:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;ng build .
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;step-3-publishing-your-artifacts&quot;&gt;Step 3: Publishing your Artifacts&lt;/h2&gt;
+
+&lt;p&gt;As the heading suggests, you’re now able to get your app onto the server to be accessible from the public url.&lt;/p&gt;
+
+&lt;p&gt;“Publish” in this context (and usually in most situations) just means copying the artefact into a publicly accessible folder, which is the endpoint configured in Apache or Nginx. In linux this is almost always &lt;code&gt;/var/www/html/*&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The simplest, most basic way to do this (in my opinion) is to just FTP into your server and copy the files. In a production environment ideally you’d use a CI/CD-esque tool like AWS Codestar, GitHub Actions or Azure Devops Pipelines, but when you’re just wanting to deploy a small prototype or POC, §“ain’t nobody got time for that”.&lt;/p&gt;
+
+&lt;p&gt;I’ll be using &lt;code&gt;sftp&lt;/code&gt; from the terminal. You can use something like Filezilla or other GUI ftp apps, but I’m lazy and I also don’t like installing extra apps if there’s a perfectly fine solution out of the box.&lt;/p&gt;
+
+&lt;p&gt;If on EC2, change to the directory that contains your &lt;code&gt;public&lt;/code&gt; files (or whatever your framework generated from the previous step) and:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;sftp -i &amp;lt;path to your pem key file here&amp;gt; ubuntu@&amp;lt;your EC2 public domain here&amp;gt;:/var/www/html/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you’re using the Amazon Linux image you can substitute &lt;code&gt;ubuntu&lt;/code&gt; for &lt;code&gt;user&lt;/code&gt;. If you don’t know how to get your key file, check out the docs on how to connect with SSH. It’s basically the same process and the pem file works for most everything to do with connecting remotely to your instance.&lt;/p&gt;
+
+&lt;p&gt;Next you want to actually transfer the files:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;put -r public/*
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Wait for that to complete and then exit &lt;code&gt;sftp&lt;/code&gt; (usually Ctrl-C or &lt;code&gt;exit&lt;/code&gt;) and restart nginx for good measure:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;sudo service nginx restart
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I’ve found that restarting nginx will invalidate client side caching so that the user doesn’t have to hard-refresh the browser if they log on with an active cache.&lt;/p&gt;
+
+&lt;h2 id=&quot;closing-remarks&quot;&gt;Closing Remarks&lt;/h2&gt;
+
+&lt;p&gt;There you go. You have an admittedly basic but super (and here ‘super’ means ‘relatively’) pain free prototype that is publicly accessible (or as accessible as you configure the EC2 security policy to be) and easy to run and update. If you’re reading this, hope it helped!&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Novel Techniques - Curriculum Learning</title>
