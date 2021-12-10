@@ -1,6 +1,7 @@
 ---
 layout: post
 title: ABC’s - Deploying Front Ends (featuring EC2)
+tags: ["ABCs", "Devops", "EC2", "FrontEnd"]
 ---
 
 With Cloud infrastructure becoming ultra-available, deploying apps have become super easy and as such the deployment/devops space (in my opinion) is going to get pretty interesting in the next few years (since I believe that trivializing the basics makes a breeding ground for creativity). I wanted to document how I’ve been deploying my side projects (very basic apps, prototypes and POCs) for posterity.

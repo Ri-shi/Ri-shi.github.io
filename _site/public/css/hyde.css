@@ -248,3 +248,20 @@ a.sidebar-nav-item:focus {
 .theme-base-0f .related-posts li a:hover {
   color: #8f5536;
 }
+
+.post-tags {
+  margin-bottom: 0.3rem;
+}
+
+.post-tags * {
+  font-size: 0.6rem;
+}
+
+a:hover {
+  text-decoration: underline !important;
+  text-decoration-color: rgb(146, 109, 189) !important;
+}
+
+a > i:hover {
+  color: rgb(165, 146, 187);
+}
