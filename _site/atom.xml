@@ -4,7 +4,7 @@
  <title>Ushir (Rishi) Raval</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2021-12-10T00:13:18+02:00</updated>
+ <updated>2021-12-10T22:20:28+02:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Rishi Raval</name>
@@ -169,7 +169,7 @@ training deep networks,” 2019.&lt;/li&gt;
 
 &lt;h2 id=&quot;understanding-the-basics&quot;&gt;Understanding the Basics&lt;/h2&gt;
 
-&lt;p&gt;First, I researched different ways that function chaining was accomplished and ultimately found &lt;a href=&quot;https://stackoverflow.com/questions/35026609/chain-custom-javascript-functions&quot;&gt;this Stackoverflow post&lt;/a&gt; from 2016. In that post I found that there are 2 basic approuches that are pretty much similar in concept but with slightly different executions.&lt;/p&gt;
+&lt;p&gt;First, I researched different ways that function chaining was accomplished and ultimately found &lt;a href=&quot;https://stackoverflow.com/questions/35026609/chain-custom-javascript-functions&quot;&gt;this Stackoverflow post&lt;/a&gt; from 2016. In that post I found that there are 2 basic approaches that are pretty much similar in concept but with slightly different executions.&lt;/p&gt;
 
 &lt;h3 id=&quot;chaining-in-javascript&quot;&gt;Chaining in Javascript&lt;/h3&gt;
 

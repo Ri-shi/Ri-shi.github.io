@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Novel Techniques - Curriculum Learning
+tags: ["NovelTechniques", "AI"]
 ---
 In Neural Network Optimization, most academics have moved on to more novel methods such as Deep Neural Nets and Cascading Networks. However, some techniques can be used to optimise more basic Simple Neural Networks that fall in line with Occam's Razor. One of them is Curriculum Learning.
 

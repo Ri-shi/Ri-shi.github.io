@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Starting from Scratch - Fluent Validation
+tags: ["StartingFromScratch", "javascript"]
 ---
 In an attempt to further understand how fluent validation works in javascript, I tried to recreate an extremely basic chain-able system from scratch.
 
@@ -12,7 +13,7 @@ I'm still searching for the "simplest form of this" with the "most substantial o
 
 ## Understanding the Basics
 
-First, I researched different ways that function chaining was accomplished and ultimately found [this Stackoverflow post](https://stackoverflow.com/questions/35026609/chain-custom-javascript-functions) from 2016. In that post I found that there are 2 basic approuches that are pretty much similar in concept but with slightly different executions.
+First, I researched different ways that function chaining was accomplished and ultimately found [this Stackoverflow post](https://stackoverflow.com/questions/35026609/chain-custom-javascript-functions) from 2016. In that post I found that there are 2 basic approaches that are pretty much similar in concept but with slightly different executions.
 
 ### Chaining in Javascript
 
