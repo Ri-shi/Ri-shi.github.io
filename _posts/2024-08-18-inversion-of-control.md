@@ -18,7 +18,7 @@ SOLID stands for:
 
 If I had a coin for every instance an engineer has told me that the last "D" in SOLID stands for Dependency Injection, I'd have 20 coins (I'm young, sue me).
 
-## By any other name...
+# By any other name...
 
 Enter the other name for Dependency Inversion...Inversion Of Control.
 
@@ -26,7 +26,7 @@ I lie here a bit. Rather than a synonymic term, Inversion of Control is to Depen
 
 Re-enter *Dependency Inversion*. This became a semi-concrete term for inverting control of dependencies. Since Dependency Management is where the IoC principle (arguable) is the most useful and tangible, the name has become popularized into a synonym for IoC (I suspect to complete the acronym 'SOLID', which I actually appreciate tbh. The word 'SOLII' sounds a bit flimsy imo).
 
-## Yet Another Explanation of IoC  
+# Yet Another Explanation of IoC  
 
 The net is ripe with much much much better explanations and definitions of IoC. Here is yet another one:
 
@@ -34,7 +34,7 @@ The net is ripe with much much much better explanations and definitions of IoC. 
 
 Basically, to quote Jedi Master Fowler, its the "hollywood principle". "Don't call us, we'll call you".
 
-## My Interpretation
+# My Interpretation
 
 Where the term "Dependency Inversion" shines at a software implementation level, the term "Inversion of Control" shines at the "integration between software" level. 
 
