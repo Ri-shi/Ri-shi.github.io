@@ -24,7 +24,7 @@ Enter the other name for Dependency Inversion...Inversion Of Control.
 
 I lie here a bit. Rather than a synonymic term, Inversion of Control is to Dependency Inversion, what the ocean is to a sea. A bit of history, [Martin Fowler popularized the term in his blog](https://martinfowler.com/articles/injection.html) around 2004, along with outlining the **Dependency Injection PATTERN**. He 'concretised' the IoC principle by making it tangible to a real use case - the management of dependencies.
 
-Re-enter *Dependency Inversion*. This became a semi-concrete term for inverting control of dependencies. Since Dependency Management is where the IoC principle (arguably) is the most useful and tangible, the name has become popularized into a synonym for IoC (I suspect to complete the acronym 'SOLID', which I actually appreciate tbh. The word 'SOLII' sounds a bit flimsy imo).
+Re-enter *Dependency Inversion*. This became a semi-concrete term for inverting control of dependencies. Since Dependency Management is where the IoC principle is (arguably) the most useful and tangible, the name has become popularized into a synonym for IoC (I suspect to complete the acronym 'SOLID', which I actually appreciate tbh. The word 'SOLII' sounds a bit flimsy imo).
 
 # Yet Another Explanation of IoC  
 
