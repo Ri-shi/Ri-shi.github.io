@@ -11,6 +11,6 @@ A Computer Scientist employed as an Engineer in the Finance sector.
 
 My approach to my craft is characterized by thoughtful consideration, whether I am working on a minor plugin or contributing to expansive and intricate enterprise software stacks.
 
-Known for making up stupid quotes that only make sense in a specific context and I possess an intense interest in software architecture, deriving satisfaction from actively contributing to, and steering ambitious visions that extend beyond individual pursuits.
+Known for making up stupid quotes that only make sense in a specific context, I possess an intense interest in software architecture, deriving satisfaction from actively contributing to, and steering ambitious visions that extend beyond individual pursuits.
 
 I also talk and write a bit like I was a nerd in the middle ages, but I attribute that to my immense interest in philosophy and the many books and podcasts I've subsequently read and listened to in my short time here on earth (it appears that it will only get worse in the future and for that, I can only apologize).
