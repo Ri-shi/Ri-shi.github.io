@@ -34,14 +34,4 @@ The net is ripe with much much much better explanations and definitions of IoC. 
 
 Basically, to quote Jedi Master Fowler, its the "hollywood principle". "Don't call us, we'll call you".
 
-# My Interpretation
-
-Where the term "Dependency Inversion" shines at a software implementation level, the term "Inversion of Control" shines at the "integration between software" level. 
-
-I've personally found the most use (not that other implementations are not useful) in integrations between multiple systems, particularly where these systems are owned by different teams. The principle can help direct questions where there might be 2 good answers.
-
-An example I think fondly of, was an instance where my team at the time had a BFF integration with a mid-office system. The discussion was around having the mid-office system implement a better paging interface on a search function (with all the various constraints and challenges that the team and the system were facing at the time) or having the BFF drive the search with the limited interface in a more informed manner (calling the api multiple times with threading and controlling the flow with the UI).
-
-In this scenario, we could clearly determine that the mid-office system would need to extend it's interface, rather than the BFF enhance it's logic of calling the other system. IoC advises that the BFF would "know too much" about the mid-office system's paging mechanism if we went the other way.
-
-The above is a very watered down version of what actually happened, but hopefully it paints a picture of how IoC is more useful then just an interview question that most engineers are going to get mixed up with Dependency Injection.
+Where the term "Dependency Inversion" shines at a software implementation level, the term "Inversion of Control" shines at the "integration between software" level. I've personally found the most use (not that other implementations are not useful) in integrations between multiple systems, particularly where these systems are owned by different teams. The principle can help direct questions where there might be 2 good answers.
