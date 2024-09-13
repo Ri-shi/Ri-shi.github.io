@@ -33,7 +33,7 @@ I am of the opinion that a "maintainable" solution and an "efficient" one are co
 
 I have a few 'theoretical relationships' that I like to think about and use when in design conversations but before we get into it, I need to note a few definitions to make my life easier:
 
-> Maintainability Factor (m<sub>f</sub>) - a quantitative measure that denotes how maintainable something is.
+> Maintainability Factor (m) - a quantitative measure that denotes how maintainable something is.
 
 This can be subjective, or an effort could be made to create an objective measurement of this, but that's going to be "de-scoped" in this read cause I don't feel like doing that today<sup>6</sup>.
 
@@ -53,7 +53,7 @@ I feel like this might be obvious, but for the sake of brevity...the more comple
 For the more mathematically inclined, this is an inverse relationship and here is the formula using what I like to refer to as my own brand of pseudo-mathematical notation<sup>8</sup>:
 
 $$
-m_f = \frac{1}{complexity}
+m = \frac{1}{complexity}
 $$
 
 ## Theoretical Relationship B - Number of Units vs Change Frequency
@@ -69,7 +69,7 @@ Basically, having two BFF's that you need to update is going to be more work the
 Pseudo-mathematically:
 
 $$
-m_f = \frac{1}{\sum units*frequency\ of\ change}
+m = \frac{1}{\sum units*frequency\ of\ change}
 $$
 
 ## Theoretical Relationship C - Complexity vs Number of Units
