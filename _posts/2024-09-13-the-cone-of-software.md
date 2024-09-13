@@ -13,7 +13,7 @@ Over my relatively short tenure as a software engineer so far, I've had a few th
 
 # To be, or not to be..."complex"
 
-The kick here, is that software is a team sport. You want things to be maintainable across the lifespan of the *team* not necessarily the individuals that happen to be within the team at the time of the decision.
+The kick here, is that software is a team sport. You want things to be maintainable across the lifespan of the *team* not necessarily the individuals that happen to be within the team at the time of a decision.
 
 Teams change over time. Knowledge gets lost with people. The solution never lies, but you might not be able to speak it's language if you've lost the meaning of the words.
 
