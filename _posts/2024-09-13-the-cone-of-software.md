@@ -101,6 +101,7 @@ I've just found that when the more efficient you make something, the more comple
 As an aside, a much smarter individual<sup>9</sup> then me said "There are only two hard things in Computer Science: cache invalidation and naming things", and yet we still use caching because it's useful. This speaks to a journey I often see in my more junior peers where they oscillate in the beginning from wanting to create complex and elegant solutions, to hyper simplified solutions that are really maintainable, before finally finding peace in the balance. But I digress...
 
 In pseudo-mathematical fashion:
+
 $$
 efficiency = k*complexity
 $$
