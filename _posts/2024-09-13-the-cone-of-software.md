@@ -1,5 +1,5 @@
 ---
-title: Thoughts on Complex Solutions and their Management - Ideal Cone of Software
+title: Some Rules of Thumb for Complex Solutions and its' Management - Ideal Cone of Software
 layout: post
 tags:
   - SoftwareClassification
