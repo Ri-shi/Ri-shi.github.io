@@ -47,7 +47,7 @@ An example of "distance" is if you have a [BFF service](https://learn.microsoft.
 
 > The more complex a solution, the less maintainable it is over time.
 
-I feel like this might be obvious, but for the sake of brevity...the more complex a solution is, the more knowledge about it's mechanism is required. This could be domain knowledge, knowledge about how a particular technology works or even something as simple as the "why", i.e. situational knowledge gained by being there when the decision to do something a particular way was made.
+I feel like this might be obvious, but for the sake of brevity...the more complex a solution is, the more knowledge about its mechanism is required. This could be domain knowledge, knowledge about how a particular technology works or even something as simple as the "why", i.e. situational knowledge gained by being there when the decision to do something a particular way was made.
 
 
 For the more mathematically inclined, this is an inverse relationship and here is the formula using what I like to refer to as my own brand of pseudo-mathematical notation<sup><a href="#asides-and-references">8</a></sup>:
