@@ -112,7 +112,7 @@ From Relationship A and Relationship D we get a theory:
 
 > If we hold that efficiency is proportionate to complexity and maintainability is inversely proportionate to complexity, then efficiency is inversely proportional to maintainability.
 
-Remember that this works under the assumption that efficiency leads to complexity. Which I believe in, but you may not. Even so, however, the relationships above might prove useful for other things.
+Remember that this works under the assumption that efficiency leads to complexity. Which I believe in, but you may not. Even so, however, the relationships above might prove useful for other things while this theory itself is not really that useful for much<sup>4</sup>.
 
 # Enter Pseudo-Geometry - Rishi's Ideal Cone of Software<sup>3</sup>
 
@@ -136,6 +136,8 @@ Using the mechanism of the "Ideal cone of software" could help provide rules of 
 **- FIN -**
 
 ___
+
+### Asides and References
 
 1. a 'rule-of-thumb' is defined as "a [practical](https://dictionary.cambridge.org/dictionary/english/practical "practical") and [approximate](https://dictionary.cambridge.org/dictionary/english/approximate "approximate") way of doing or [measuring](https://dictionary.cambridge.org/dictionary/english/measure "measuring") something" by Cambridge Dictionary.
 2. hopefully I am, but is there ever any way of knowing that you're maturing?...
