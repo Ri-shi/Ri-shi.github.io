@@ -9,7 +9,7 @@ tags:
   - SoftwareMaintainability
   - RuleOfThumb
 ---
-Over my relatively short tenure as a software engineer so far, I've had a few thoughts on how to deal with "efficiency" and "maintainability" across multiple facets within my teams' estate. It's lead to a useful<sup>4</sup> rule-of-thumb<sup>1</sup> when trying to design/make decisions about systems in a way that balances efficiency and maintainability.
+Over my relatively short tenure as a software engineer so far, I've had a few thoughts on how to deal with "efficiency" and "maintainability" across multiple facets within my teams' estate. It's lead to a useful<sup><a href="#asides-and-references">4</a></sup> rule-of-thumb<sup><a href="#asides-and-references">1</a></sup> when trying to design/make decisions about systems in a way that balances efficiency and maintainability.
 
 # To be, or not to be..."complex"
 
@@ -17,7 +17,7 @@ The kick here, is that software is a team sport. You want things to be maintaina
 
 Teams change over time. Knowledge gets lost with people. The solution never lies, but you might not be able to speak it's language if you've lost the meaning of the words.
 
-This is obviously a tall ask. If an answer to a design question seams apparent, I look at it with the utmost suspicion<sup>7</sup>. Maturing<sup>2</sup> as an engineer has given me a couple of questions that I feel I need to consistently ask when thinking/planning the implementation details of the stack. One of them is:
+This is obviously a tall ask. If an answer to a design question seams apparent, I look at it with the utmost suspicion<sup><a href="#asides-and-references">7</a></sup>. Maturing<sup><a href="#asides-and-references">2</a></sup> as an engineer has given me a couple of questions that I feel I need to consistently ask when thinking/planning the implementation details of the stack. One of them is:
 
 > What things do we want to be efficient and what are we comfortable compromising for the stack to be maintainable?
 
@@ -35,7 +35,7 @@ I have a few 'theoretical relationships' that I like to think about and use when
 
 > Maintainability Factor (m) - a quantitative measure that denotes how maintainable something is.
 
-This can be subjective, or an effort could be made to create an objective measurement of this, but that's going to be "de-scoped" in this read cause I don't feel like doing that today<sup>6</sup>.
+This can be subjective, or an effort could be made to create an objective measurement of this, but that's going to be "de-scoped" in this read cause I don't feel like doing that today<sup><a href="#asides-and-references">6</a></sup>.
 
 > 'Distant' is used to mean that something is not immediately reachable from wherever you are at that time.
 
@@ -50,7 +50,7 @@ An example of "distance" is if you have a [BFF service](https://learn.microsoft.
 I feel like this might be obvious, but for the sake of brevity...the more complex a solution is, the more knowledge about it's mechanism is required. This could be domain knowledge, knowledge about how a particular technology works or even something as simple as the "why", i.e. situational knowledge gained by being there when the decision to do something a particular way was made.
 
 
-For the more mathematically inclined, this is an inverse relationship and here is the formula using what I like to refer to as my own brand of pseudo-mathematical notation<sup>8</sup>:
+For the more mathematically inclined, this is an inverse relationship and here is the formula using what I like to refer to as my own brand of pseudo-mathematical notation<sup><a href="#asides-and-references">8</a></sup>:
 
 $$
 m = \frac{1}{complexity}
@@ -64,7 +64,7 @@ This is pretty straight-forward:
 
 If you have related software that necessitates frequent change, the multiplicity to enact that change is inversely proportional to the maintainability factor.
 
-Basically, having two BFF's that you need to update is going to be more work then having a monolithic-esque MVC setup. We know that the front-office applications have a relatively higher frequency of change. This is a good example where you might want to compromise on the maintainability factor in favor of the non-functional, i.e. having BFF's and following that pattern<sup>4</sup>.
+Basically, having two BFF's that you need to update is going to be more work then having a monolithic-esque MVC setup. We know that the front-office applications have a relatively higher frequency of change. This is a good example where you might want to compromise on the maintainability factor in favor of the non-functional, i.e. having BFF's and following that pattern<sup><a href="#asides-and-references">4</a></sup>.
 
 Pseudo-mathematically:
 
@@ -98,7 +98,7 @@ Note that this is drastically different from saying that complex solutions are a
 
 I've just found that when the more efficient you make something, the more complex the overall solution. A perfect example is caching from earlier in this read. I'm sure many, many, many engineers can relate, but caching has been both a nightmare to maintain and a blessing to the client experience (but maybe not always at the same moment in time). 
 
-As an aside, a much smarter individual<sup>9</sup> then me said "There are only two hard things in Computer Science: cache invalidation and naming things", and yet we still use caching because it's useful. This speaks to a journey I often see in my more junior peers where they oscillate in the beginning from wanting to create complex and elegant solutions, to hyper simplified solutions that are really maintainable, before finally finding peace in the balance. But I digress...
+As an aside, a much smarter individual<sup><a href="#asides-and-references">9</a></sup> then me said "There are only two hard things in Computer Science: cache invalidation and naming things", and yet we still use caching because it's useful. This speaks to a journey I often see in my more junior peers where they oscillate in the beginning from wanting to create complex and elegant solutions, to hyper simplified solutions that are really maintainable, before finally finding peace in the balance. But I digress...
 
 In pseudo-mathematical fashion:
 
@@ -112,15 +112,15 @@ From Relationship A and Relationship D we get a theory:
 
 > If we hold that efficiency is proportionate to complexity and maintainability is inversely proportionate to complexity, then efficiency is inversely proportional to maintainability.
 
-Remember that this works under the assumption that efficiency leads to complexity. Which I believe in, but you may not. Even so, however, the relationships above might prove useful for other things while this theory itself is not really that useful for much<sup>4</sup>.
+Remember that this works under the assumption that efficiency leads to complexity. Which I believe in, but you may not. Even so, however, the relationships above might prove useful for other things while this theory itself is not really that useful for much<sup><a href="#asides-and-references">4</a></sup>.
 
-# Enter Pseudo-Geometry - Rishi's Ideal Cone of Software<sup>3</sup>
+# Enter Pseudo-Geometry - Rishi's Ideal Cone of Software<sup><a href="#asides-and-references">3</a></sup>
 
 A cone is this:
 
 ![Cone](https://dictionary.cambridge.org/images/thumb/cone_noun_002_08089.jpg?version=6.0.31)
 
-Now that we've gotten that out of the way. I combine all these pseudo-formulas above into a delightful<sup>4</sup> little ice-cream cone that helps you make otherwise hard decisions<sup>5</sup>.
+Now that we've gotten that out of the way. I combine all these pseudo-formulas above into a delightful<sup><a href="#asides-and-references">4</a></sup> little ice-cream cone that helps you make otherwise hard decisions<sup><a href="#asides-and-references">5</a></sup>.
 
 ![Rishi's Ideal Cone of Software]({{ site.url }}/public/assets/rishis-ideal-cone-of-software.drawio.png)
 
@@ -140,7 +140,7 @@ ___
 ### Asides and References
 
 1. a 'rule-of-thumb' is defined as "a [practical](https://dictionary.cambridge.org/dictionary/english/practical "practical") and [approximate](https://dictionary.cambridge.org/dictionary/english/approximate "approximate") way of doing or [measuring](https://dictionary.cambridge.org/dictionary/english/measure "measuring") something" by Cambridge Dictionary.
-2. hopefully I am, but is there ever any way of knowing that you're maturing?...
+2. hopefully I am maturing, but is there really ever any way of knowing that are?
 3. no, you're thinking of ["cones of dunshire"](https://parksandrecreation.fandom.com/wiki/The_Cones_of_Dunshire_(game))...
 4. in my opinion...
 5. cause everything is better with dessert...
