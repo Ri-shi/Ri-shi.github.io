@@ -132,6 +132,8 @@ Following this mechanism, we get the following rules of thumb:
 
 Using the mechanism of the "Ideal cone of software" could help provide rules of thumb when making decisions on how much to invest in making things efficient while allowing the right things in your software stack to be maintainable for the next engineer/team after you/yours moves on to the next stack.
 
+**- FIN -**
+
 ___
 
 1. a 'rule-of-thumb' is defined as "a [practical](https://dictionary.cambridge.org/dictionary/english/practical "practical") and [approximate](https://dictionary.cambridge.org/dictionary/english/approximate "approximate") way of doing or [measuring](https://dictionary.cambridge.org/dictionary/english/measure "measuring") something" by Cambridge Dictionary.
