@@ -96,7 +96,7 @@ This is arguably even more abstract:
 
 Note that this is drastically different from saying that complex solutions are always more efficient. **Which I am not saying.**
 
-I've just found that when the more efficient you make something, the more complex the overall solution. A perfect example is caching from earlier in this read. I'm sure many, many, many engineers can relate, but caching has been both a nightmare to maintain and a blessing to the client experience (but maybe not always at the same moment in time). 
+I've just found that the more efficient you make something, the more complex the overall solution. A perfect example is caching from earlier in this read. I'm sure many, many, many engineers can relate, but caching has been both a nightmare to maintain and a blessing to the client experience (but maybe not always at the same moment in time). 
 
 As an aside, a much smarter individual<sup><a href="#asides-and-references">9</a></sup> then me said "There are only two hard things in Computer Science: cache invalidation and naming things", and yet we still use caching because it's useful. This speaks to a journey I often see in my more junior peers where they oscillate in the beginning from wanting to create complex and elegant solutions, to hyper simplified solutions that are really maintainable, before finally finding peace in the balance. But I digress...
 
