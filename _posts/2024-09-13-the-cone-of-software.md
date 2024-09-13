@@ -17,7 +17,7 @@ The kick here, is that software is a team sport. You want things to be maintaina
 
 Teams change over time. Knowledge gets lost with people. The solution never lies, but you might not be able to speak it's language if you've lost the meaning of the words.
 
-This is obviously a tall ask. If an answer to a design question seams apparent, I look at it with the utmost suspicion<sup><a href="#asides-and-references">7</a></sup>. Maturing<sup><a href="#asides-and-references">2</a></sup> as an engineer has given me a couple of questions that I feel I need to consistently ask when thinking/planning the implementation details of the stack. One of them is:
+This is obviously a tall ask. If an answer to a design question seems apparent, I look at it with the utmost suspicion<sup><a href="#asides-and-references">7</a></sup>. Maturing<sup><a href="#asides-and-references">2</a></sup> as an engineer has given me a couple of questions that I feel I need to consistently ask when thinking/planning the implementation details of the stack. One of them is:
 
 > What things do we want to be efficient and what are we comfortable compromising for the stack to be maintainable?
 
