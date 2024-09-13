@@ -40,7 +40,7 @@ This is basically a 'path of least resistance' and from my experiments, demonstr
 
 ### Downsides
 
-The first issue is the matter of grading. This requires some form of intimacy with the data before training and if the data is graded poorly or not properly split up, or if the training speed is too fast or too slow, it may have no effect. Thus we've introduced even more annoying hyperparamters to the mix.
+The first issue is the matter of grading. This requires some form of intimacy with the data before training and if the data is graded poorly or not properly split up, or if the training speed is too fast or too slow, it may have no effect. Thus we've introduced even more annoying hyperparameters to the mix.
 
 The second issue makes the first one even more annoying. This method increases learning time significantly (and here 'significantly' is an understatement), which might not be feasible for larger models and make tuning much more tedious.
 
