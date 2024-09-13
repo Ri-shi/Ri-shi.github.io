@@ -62,7 +62,7 @@ This is pretty straight-forward:
 
 > The more related units of 'distant' software you have, the more complex it becomes to maintain it.
 
-If you have related software that necessitates frequent change, the multiplicity to enact that change is inversely proportional to the maintainability factor.
+If you have related software that necessitates frequent change, the multiplicity of effort to enact that change is inversely proportional to the maintainability factor.
 
 Basically, having two BFF's that you need to update is going to be more work then having a monolithic-esque MVC setup. We know that the front-office applications have a relatively higher frequency of change. This is a good example where you might want to compromise on the maintainability factor in favor of the non-functional, i.e. having BFF's and following that pattern<sup><a href="#asides-and-references">4</a></sup>.
 
